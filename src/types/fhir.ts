@@ -50,7 +50,14 @@ export type ParticipantStatus =
   | "tentative"
   | "needs-action";
 
-// Appointment participant
+export type AppointmentActorType =
+  | "Patient"
+  | "Practitioner"
+  | "PractitionerRole"
+  | "Location"
+  | "Device"
+  | "HealthcareService";
+
 export interface AppointmentParticipant {
   type?: CodeableConcept[];
   actor?: Reference;
