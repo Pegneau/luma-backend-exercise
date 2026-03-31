@@ -64,7 +64,7 @@ export class SyncService {
       incomingByEhrId.set(mapped.ehrId, mapped);
     }
 
-    // Fetch existing Luma records for this facility ─────────────────────────
+    // Fetch existing Luma records for this facility
 
     const existing = await this.dbClient.findAppointmentsByFacility(
       integratorId,
@@ -78,7 +78,7 @@ export class SyncService {
       }
     }
 
-    // ── Reconcile ──────────────────────────────────────────────────────────
+    // Reconcile
 
     let created = 0;
     let updated = 0;
@@ -123,8 +123,6 @@ export class SyncService {
         cancelled++;
       }
     }
-
-    // ──    Outcome log ─────────────────────────────────────────────────────
 
     logger.info("sync:complete", {
       integratorId,
