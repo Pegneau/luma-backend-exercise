@@ -8,16 +8,9 @@ import type {
 } from "../types/fhir.js";
 import type { LumaAppointment, LumaAppointmentStatus } from "../types/luma.js";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Status mapping
-// ─────────────────────────────────────────────────────────────────────────────
 
-/**
- * Maps every valid FHIR AppointmentStatus to Luma's internal vocabulary.
- *
- * Keeping this as a plain Record (not a switch) means TypeScript will error at
- * compile time if a new FHIR status is added to the union but forgotten here.
- */
+//  Maps every valid FHIR AppointmentStatus to Luma's internal vocabulary.
+
 const FHIR_STATUS_MAP: Record<AppointmentStatus, LumaAppointmentStatus> = {
   proposed: "pending",
   pending: "pending",
