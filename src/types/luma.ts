@@ -8,7 +8,7 @@ export type LumaAppointmentStatus =
   | "no_show";
 
 export interface LumaAppointment {
-  id: string; // Luma primary key
+  id: string;
   ehrId?: string; // External EHR Appointment.id
   integratorId: string; // EHR integration owner
   facilityId: string; // Clinic / Location
@@ -22,8 +22,8 @@ export interface LumaAppointment {
   rawEhrStatus: AppointmentStatus;
 
   // Timing
-  startTime?: string; // ISO 8601 UTC
-  endTime?: string; // ISO 8601 UTC
+  startTime?: string;
+  endTime?: string;
 
   // Audit
   createdAt: string;

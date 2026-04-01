@@ -116,6 +116,8 @@ export class SyncService {
       const isAlreadyCancelled = stored.status === "cancelled";
 
       if (isGoneFromEhr && !isAlreadyCancelled) {
+        // Note: rawEhrStatus is not updated here because the appointment
+        // was missing from the EHR response entirely.
         await this.dbClient.updateAppointment(stored.id, {
           status: "cancelled",
           updatedAt: now,
