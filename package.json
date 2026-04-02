@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "nodemon --watch src --ext ts --exec tsx src/app.ts",
     "start": "node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,13 @@
   "type": "module",
   "devDependencies": {
     "@types/amqplib": "^0.10.8",
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
     "@types/node": "^25.5.0",
+    "@types/sinon": "^21.0.0",
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "sinon": "^21.0.3",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   },

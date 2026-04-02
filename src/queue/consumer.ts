@@ -78,6 +78,9 @@ export class QueueConsumer {
     // retryable errors from overwhelming the EHR.
     ch.prefetch(1);
 
+    // Subscribe to the Sync queue.
+    // We use .catch() because ch.consume expects a synchronous callback;
+    // unhandled async errors here would crash the process.
     await ch.consume(QUEUE_SYNC, (msg) => {
       this.handleSync(msg).catch((err: unknown) => {
         const message = err instanceof Error ? err.message : String(err);
