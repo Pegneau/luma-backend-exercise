@@ -1,7 +1,7 @@
 import amqp from "amqplib";
 
 import type { AppointmentUpdate, DbClient } from "./clients/dbClient.js";
-import type { EhrClient } from "./clients/ehrClient.js";
+import type { DateRange, EhrClient } from "./clients/ehrClient.js";
 import type { FhirAppointment } from "./types/fhir.js";
 import type { LumaAppointment } from "./types/luma.js";
 import { QueueConsumer } from "./queue/consumer.js";
@@ -31,10 +31,15 @@ class MockDbClient implements DbClient {
   async findAppointmentsByFacility(
     integratorId: string,
     facilityId: string,
+    dateRange: DateRange,
   ): Promise<LumaAppointment[]> {
     return [...this.store.values()].filter(
       (app) =>
-        app.integratorId === integratorId && app.facilityId === facilityId,
+        app.integratorId === integratorId &&
+        app.facilityId === facilityId &&
+        app.startTime !== undefined &&
+        app.startTime >= dateRange.start &&
+        app.startTime <= dateRange.end,
     );
   }
 

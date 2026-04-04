@@ -1,5 +1,6 @@
 import type { AppointmentStatus } from "../types/fhir.js";
 import type { LumaAppointment, LumaAppointmentStatus } from "../types/luma.js";
+import type { DateRange } from "./ehrClient.js";
 export interface AppointmentUpdate {
   status?: LumaAppointmentStatus;
   rawEhrStatus?: AppointmentStatus;
@@ -13,6 +14,7 @@ export interface DbClient {
   findAppointmentsByFacility(
     integratorId: string,
     facilityId: string,
+    dateRange: DateRange,
   ): Promise<LumaAppointment[]>;
 
   createAppointment(appointment: LumaAppointment): Promise<void>;

@@ -69,6 +69,7 @@ export class SyncService {
     const existing = await this.dbClient.findAppointmentsByFacility(
       integratorId,
       facilityId,
+      dateRange,
     );
 
     const existingByEhrId = new Map<string, LumaAppointment>();

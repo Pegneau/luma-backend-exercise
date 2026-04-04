@@ -31,6 +31,7 @@ class StubDbClient implements DbClient {
   findAppointmentsByFacility(
     _integratorId: string,
     _facilityId: string,
+    _dateRange: DateRange,
   ): Promise<LumaAppointment[]> {
     return Promise.resolve([]);
   }
